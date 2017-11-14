@@ -1,0 +1,23 @@
+{
+  "name": "dito-challenge",
+  "version": "1.0.0",
+  "description": "App created to resolve dito challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/app.js --exec",    
+    "seed": "node seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Charlinho/dito-challenge.git"
+  },
+  "author": "Charleston Campos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Charlinho/dito-challenge/issues"
+  },
+  "homepage": "https://github.com/Charlinho/dito-challenge#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

@@ -57,3 +57,14 @@ typings/
 # dotenv environment variables file
 .env
 
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# eclipse project file
+.settings/
+manifest.mf
+build.xml
+
