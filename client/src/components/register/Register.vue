@@ -1,28 +1,28 @@
 <template>
   <div class="row">
     <br>
-    <form class="col s10 m8 offset-m2">
+    <form @submit.prevent="save()" class="col s10 m8 offset-m2">
       <div class="card">        
         <div class="card-content">
           <div class="row">
             <div class="input-field col s12 m6">
-              <input placeholder="Nome" id="first_name" type="text" class="validate">
+              <input v-model="user.name" placeholder="Nome" id="first_name" type="text" class="validate">
               <label for="first_name">Nome</label>
             </div>
             <div class="input-field col s12 m6">
-              <input id="last_name" type="text" class="validate">
+              <input v-model="user.lastName" id="last_name" type="text" class="validate">
               <label for="last_name">Sobre Nome</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
+              <input v-model="user.email" id="email" type="email" class="validate">
               <label for="email">Email</label>
             </div>
           </div>      
           <div class="row">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
+              <input v-model="user.password" id="password" type="password" class="validate">
               <label for="password">Password</label>
             </div>
           </div>
@@ -38,10 +38,25 @@
   </div>
 </template>
 <script>
+import User from '../../domain/user/User'
+import UserService from '../../domain/user/UserService'
+
 export default {
+  data () {
+    return {
+      user: new User()
+    }
+  },
+  created () {
+    this.service = new UserService(this.$resource)
+  },
   methods: {
-    backToHome (event) {      
+    backToHome (event) {
       this.$router.push('/')
+    },
+    save () {
+      this.service.save(this.user)
+        .then(this.$router.push('/'), err => console.log(err))
     }
   }
 }
