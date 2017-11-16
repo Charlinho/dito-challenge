@@ -12,10 +12,9 @@ const state = {
 const getters = {
   getAuthenticatedUserName: () => {
     let userName = ''
-
-    if (!state.user && Vue.ls.get('logged')) {
+    if (!state.user && state.user.user && Vue.ls.get('logged')) {
       userName = Vue.ls.get('logged').name
-    } else if (state.user) {
+    } else if (state.user && state.user.user) {
       userName = state.user.user.name
     }
 

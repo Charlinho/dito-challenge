@@ -4,22 +4,10 @@ const express = require('express'),
     app = express(),
     port = process.env.PORT || 8081,
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser'),
-    session = require('express-session'),
-    MongoStore = require('connect-mongo')(session);
+    bodyParser = require('body-parser');
 
 mongoose.connect(process.env.DB_URI, { useMongoClient: true })
-mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
-
-app.use(session ({
-    secret: 'SECRET',
-    resave: true,
-    saveUninitialized: false,    
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection      
-    })
-}));
-  
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'))  
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

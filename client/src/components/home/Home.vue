@@ -4,10 +4,7 @@
     <div class="input-field col s12 m8 offset-m2">
       <input placeholder="Pesquisar" id="first_name" type="text" class="validate">
       <label for="first_name">Pesquisar</label>
-    </div>
-    <card></card>
-    <card></card>
-    <card></card>    
+    </div>    
   </div>  
 </template>
 

@@ -13,7 +13,7 @@
             <li>
               <router-link to="/register"><i class="material-icons left">add_circle</i>Cadastrar</router-link>
             </li>         
-            <li><a href="#" @click="logout()">Sair</a></li>
+            <li v-show="isAuthenticated()"><a href="#" @click="logout()">Sair</a></li>
           </ul>          
         </div>
       </nav>
@@ -21,7 +21,7 @@
         <li v-show="!isAuthenticated()"><router-link to="/login">Entrar</router-link></li>
         <li><router-link to="/register">Cadastrar</router-link></li>
         <li class="divider"></li>        
-        <li><a href="#" @click="logout()">Sair</a></li>
+        <li v-show="isAuthenticated()"><a href="#" @click="logout()">Sair</a></li>
       </ul>
     </div>
     <router-view/>
@@ -30,9 +30,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import AuthenticationService from './domain/User/AuthenticationService'
 
 export default {
   name: 'app',
+  created () {
+    this.service = new AuthenticationService(this.$resource, 'users/logout')
+  },
   computed: mapGetters(['getAuthenticatedUserName']),
   methods: {
     isAuthenticated () {
@@ -40,7 +44,7 @@ export default {
     },
     logout () {
       this.$ls.remove('logged')
-      location.reload()
+      this.$store.dispatch({type: 'login', user: null})
     }
   }
 }

@@ -37,7 +37,7 @@ export default {
     }
   },
   created () {
-    this.service = new AuthenticationService(this.$resource)
+    this.service = new AuthenticationService(this.$resource, 'users/authentication')
   },
   methods: {
     authentication () {

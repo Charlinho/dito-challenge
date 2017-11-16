@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken')
 
 module.exports = {
 
@@ -14,15 +15,8 @@ module.exports = {
         var err = new Error('Wrong email or password.');
         err.status = 401;
         return next(err);
-      } else {
-        req.session.userId = user._id;
-        let authenticatedUser = {
-          email: user.email,
-          name: user.name,
-          lastName: user.lastName,
-          id: user._id
-        }
-        return res.json(authenticatedUser);
+      } else {      
+        return res.json({_id: user._id, name: user.name, lastName: user.lastName, email: user.email, token: jwt.sign({_id: user._id}, 'SECRET'), expiresIn: 86400});
       }
     });
   }
