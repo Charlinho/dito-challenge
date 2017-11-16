@@ -16,6 +16,13 @@ module.exports = {
         return next(err);
       } else {
         req.session.userId = user._id;
+        let authenticatedUser = {
+          email: user.email,
+          name: user.name,
+          lastName: user.lastName,
+          id: user._id
+        }
+        return res.json(authenticatedUser);
       }
     });
   }

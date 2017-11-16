@@ -56,7 +56,7 @@ export default {
     },
     save () {
       this.service.save(this.user)
-        .then(this.$router.push('/'), err => console.log(err))
+        .then(this.$router.push('/login'), err => console.log(err))
     }
   }
 }

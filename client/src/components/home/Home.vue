@@ -12,27 +12,13 @@
 </template>
 
 <script>
-import User from '../../domain/user/User'
 import Card from '../shared/card/Card.vue'
-import AuthenticationService from '../../domain/user/AuthenticationService'
 
 export default {
   components: {
     'card': Card
   },
-  name: 'Home',
-  data () {
-    return {
-    }
-  },
-  mounted () {
-    setTimeout(() => {
-      let user = new User('Charleston', 'Campos', 'charlinhocjc@gmail.com', '123456')
-
-      this.service = new AuthenticationService(this.$resource)
-      this.service.authentication(user).then((data) => console.log(data.status), err => console.log(err))
-    }, 5000)
-  }
+  name: 'Home'
 }
 </script>
 
