@@ -16,7 +16,7 @@ npm run dev
 ```
 
 # Back
-Open terminal in "server" folder and execute these command 
+Open terminal in "server" folder and execute these commands 
 
 ```
 npm install
