@@ -16,6 +16,9 @@
       <div v-for="dt in data" :key="dt.id">
         <card :title="dt.title" :img-url="dt.imgUrl" :description="dt.description"></card>
       </div>
+      <div v-show="data.length == 0">
+        <p class="center-align">Nenhum resultado encontrado!</p>
+      </div>
     </div> 
   </div>   
 </template>
@@ -91,6 +94,10 @@ export default {
       $('input.autocomplete').autocomplete({
         data,
         limit: 10,
+        onAutocomplete: (val) => {
+          this.filter = val
+          this.search()
+        },
         minLength: 2
       })
     },
