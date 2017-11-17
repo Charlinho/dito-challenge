@@ -2,8 +2,8 @@
   <div id="app">
     <div class="navbar-fixed">      
       <nav class="nav-extended blue-grey darken-4">
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Dito Challenge</a>
+        <div class="nav-wrapper">          
+          <a href="#" @click="redirectToHome()" class="brand-logo">Dito Challenge</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="hide-on-med-and-down right">                                       
             <li><a href="#" class="dropdown-button" data-activates="dropdown1"><i class="material-icons left">account_circle</i> {{ getAuthenticatedUserName }}</a></li>            
@@ -11,7 +11,7 @@
           <ul class="side-nav" id="mobile-demo">
             <li v-show="!isAuthenticated()"><router-link to="/login"><i class="material-icons left">account_circle</i>Entrar</router-link></li>
             <li>
-              <router-link to="/register"><i class="material-icons left">add_circle</i>Cadastrar</router-link>
+              <router-link to="/register">Cadastrar</router-link>
             </li>         
             <li v-show="isAuthenticated()"><a href="#" @click="logout()">Sair</a></li>
           </ul>          
@@ -44,7 +44,10 @@ export default {
     },
     logout () {
       this.$ls.remove('logged')
-      this.$store.dispatch({type: 'login', user: null})
+      location.reload()
+    },
+    redirectToHome () {
+      this.$router.push('/')
     }
   }
 }

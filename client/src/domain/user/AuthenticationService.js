@@ -1,13 +1,9 @@
 export default class AuthenticationService {
-  constructor (resourse, address) {
-    this._resourse = resourse(address)
+  constructor (resourse) {
+    this._resourse = resourse('users/authentication')
   }
 
   authentication (user) {
     return this._resourse.save(user)
-  }
-
-  logout () {
-    return this._resourse.save()
   }
 }

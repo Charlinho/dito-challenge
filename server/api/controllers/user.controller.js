@@ -19,5 +19,14 @@ module.exports = {
         return res.json({_id: user._id, name: user.name, lastName: user.lastName, email: user.email, token: jwt.sign({_id: user._id}, 'SECRET'), expiresIn: 86400});
       }
     });
+  },
+
+  listAll: (req, res) => {
+    User.find({}, function(err, user) {
+      if (err) {
+        res.send(err);
+      } 
+      res.json(user);
+    })
   }
 }
