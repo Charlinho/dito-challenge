@@ -6,8 +6,8 @@ const express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
-mongoose.connect(process.env.DB_URI, { useMongoClient: true })
-mongoose.connection.on('error', console.error.bind(console, 'connection error:'))  
+mongoose.connect(process.env.DR_URI);
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
