@@ -1,5 +1,6 @@
 # Dito Challenge
-App created to resolve dito challenge
+App created to resolve dito challenge.
+The technologies used were Vue.js and Node.js.
 
 # Setup
 You need to have Node.js installed 
